@@ -121,6 +121,46 @@
           }
         }
       }
+    },
+    "ng-todd": {
+      "root": "projects/ng-todd",
+      "sourceRoot": "projects/ng-todd/src",
+      "projectType": "library",
+      "prefix": "todd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-todd/tsconfig.lib.json",
+            "project": "projects/ng-todd/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ng-todd/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-todd/src/test.ts",
+            "tsConfig": "projects/ng-todd/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-todd/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-todd/tsconfig.lib.json",
+              "projects/ng-todd/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ng-todd-app"
